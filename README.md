@@ -7,9 +7,9 @@ extension methods for the SitePrism page objects (which make my life easier).
 
 ## Pre-requisites
 
-Ruby (tested with version 2.3.1)
-Bundler (run `gem install bundler` to install it if you don't have it)
-Firefox (tested with version 47.0.1)
+- Ruby (tested with version 2.3.1)
+- Bundler (run `gem install bundler` to install it if you don't have it)
+- Firefox (tested with version 47.0.1)
 
 
 ## Setup and How to Use
@@ -20,5 +20,5 @@ Firefox (tested with version 47.0.1)
 
 ## More Information
 
-Capybara Documentation - https://github.com/jnicklas/capybara
-SitePrism Documentation - https://github.com/natritmeyer/site_prism
+- Capybara Documentation - https://github.com/jnicklas/capybara
+- SitePrism Documentation - https://github.com/natritmeyer/site_prism
