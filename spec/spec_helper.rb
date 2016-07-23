@@ -41,8 +41,7 @@ RSpec.configure do |config|
   # Includes
   config.include Capybara::DSL
   config.include UtilityHelpers
-  config.include PageNameHelpers
-  config.include SitePrism::Additions, js: true
+  config.include SitePrism::Additions
 
   config.after(:each) do |example|
     if example.exception

@@ -97,6 +97,29 @@ module SitePrism
     def scroll_to_bottom_of_page
       scroll_by y: 100000
     end
+
+    # Takes a screenshot and stores it in the project ./tmp/ folder
+    def take_screenshot!
+      meta            = RSpec.current_example.metadata
+      filename        = File.basename File.basename(meta[:file_path])
+      line_number     = meta[:line_number]
+
+      # Build the screenshot name
+      screenshot_name = [
+          Time.now.to_i,
+          SecureRandom.hex(3),
+          filename,
+          line_number,
+      ].join('-') + '.png'
+
+      tmp_dir = PROJECT_ROOT.join('tmp')
+      screenshot_dir, _ = FileUtils.mkdir_p File.join tmp_dir, 'screenshots'
+      screenshot_path = File.join screenshot_dir, screenshot_name
+
+      # Save and inform
+      page.save_screenshot(screenshot_path, full: true)
+      puts '', meta[:full_description], "  Screenshot: #{screenshot_path}"
+    end
   end
 end
 
