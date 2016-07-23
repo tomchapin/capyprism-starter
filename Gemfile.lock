@@ -20,6 +20,7 @@ GEM
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     diff-lcs (1.2.5)
+    dotenv (2.1.1)
     ffi (1.9.14)
     i18n (0.7.0)
     method_source (0.8.2)
@@ -81,6 +82,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport (= 5.0)
   capybara (= 2.7.1)
+  dotenv (= 2.1.1)
   poltergeist (= 1.10)
   pry
   rspec (= 3.4)

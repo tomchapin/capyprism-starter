@@ -37,7 +37,7 @@ Capybara.configure do |config|
   config.javascript_driver = (ENV['WEBDRIVER'] || :selenium).to_sym
   config.default_max_wait_time = 30
   config.run_server = false # don't start Rack
-  config.app_host   = ENV['URL'] || 'https://www.google.com/'
+  config.app_host   = ENV['URL']
 end
 
 

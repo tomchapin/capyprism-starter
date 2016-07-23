@@ -1,6 +1,6 @@
 require 'securerandom'
 
-module Helpers
+module UtilityHelpers
   def wait_until(timeout = 5)
     break_time = Time.now + timeout
     loop do

@@ -14,8 +14,9 @@ extension methods for the SitePrism page objects (which make my life easier).
 
 ## Setup and How to Use
 
-1. Run `bundle install` to install all of the necessary gems.
-2. Run `rspec` to launch the test suite.
+1. Copy the `.env-example` file to `.env` and make sure the URL variable is pointed at the right place
+1. Run `make install` to install all of the necessary gems.
+2. Run `make run` to launch the test suite.
 
 
 ## More Information

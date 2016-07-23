@@ -1,9 +1,16 @@
+require 'dotenv'
 require 'rspec'
 require 'active_support/all'
 require 'pathname'
 require 'site_prism' # Page object gem for feature tests
 
 PROJECT_ROOT = Pathname.new('..').expand_path(File.dirname(__FILE__))
+
+# Attempt to load environment variables from the .env file
+Dotenv.load
+
+# Enforce required environment vars
+raise('Your URL environment variable is missing! Make sure your .env file is in place!') unless ENV['URL']
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -33,7 +40,8 @@ RSpec.configure do |config|
 
   # Includes
   config.include Capybara::DSL
-  config.include Helpers
+  config.include UtilityHelpers
+  config.include PageHelpers
   config.include SitePrism::Additions, js: true
 
   config.after(:each) do |example|
