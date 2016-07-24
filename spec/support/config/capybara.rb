@@ -26,8 +26,8 @@ end
 # ChromeDriver 1.x, for Chrome <= 28
 # Capybara.register_driver :chrome do |app|
 #   profile = Selenium::WebDriver::Chrome::Profile.new
-#   profile['download.default_directory'] = DownloadHelper::PATH.to_s
-#   args = ["--window-size=1280,720"]
+#   profile['download.default_directory'] = DownloadHelpers::PATH.to_s
+#   args = ["--window-size=1280,768"]
 #   Capybara::Selenium::Driver.new(app, browser: :chrome, profile: profile, args: args)
 # end
 
@@ -36,10 +36,10 @@ Capybara.register_driver :chrome do |app|
   prefs = {
       download: {
           prompt_for_download: false,
-          default_directory: DownloadHelper::PATH.to_s
+          default_directory: DownloadHelpers::PATH.to_s
       }
   }
-  args = ['--window-size=1280,720', '--start-maximized']
+  args = ['--window-size=1280,768', '--start-maximized']
   Capybara::Selenium::Driver.new(app, browser: :chrome, prefs: prefs, args: args)
 end
 
