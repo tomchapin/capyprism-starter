@@ -28,6 +28,10 @@ FALSEY_STRINGS = %w(f false n no 0).flat_map do |str|
   [str.downcase, str.upcase, str.capitalize]
 end.uniq
 
+# Comma-separated list of mime types which can be downloaded by the test driver
+# Downloads are put into the project tmp/downloads/ folder
+DOWNLOADABLE_MIME_TYPES = "application/x-bzip2"
+
 RSpec.configure do |config|
   # General Config
   config.filter_run focus: true
@@ -40,8 +44,13 @@ RSpec.configure do |config|
 
   # Includes
   config.include Capybara::DSL
-  config.include UtilityHelpers
+  config.include PageNameHelpers
+  config.include DownloadHelpers
   config.include SitePrism::Additions
+
+  config.before(:each) do
+    DownloadHelpers::clear_downloads
+  end
 
   config.after(:each) do |example|
     if example.exception
