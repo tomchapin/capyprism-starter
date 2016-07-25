@@ -148,7 +148,7 @@ module SitePrism
     #
     #   # Search on the Bar page for any Foo sections by both their name and title
     #   bar_page = BarPage.new
-    #   found_foo_section = bar_page.find_in(:foo_sections, title: 'qux', name: 'qux')
+    #   found_foo_section = bar_page.find_in(:foo_sections, title: 'qux', name: 'baz')
     #
     #   # Search for a foo section whose name matches a regular expression, using a shorter wait time
     #   found_foo_section = bar_page.find_in(:foo_sections, name: /[0-9]abc/, wait_time_seconds: 5)
