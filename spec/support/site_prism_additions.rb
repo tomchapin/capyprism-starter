@@ -121,17 +121,24 @@ module SitePrism
       puts '', meta[:full_description], "  Screenshot: #{screenshot_path}"
     end
 
-    # Method that makes it easier to search a collection of sections,
-    # using the collection name, a specified method name, and the expected value.
+    # Method that makes it easier to search a collection of sections or elements,
+    # using the collection name and hash of method names and their expected values.
+    # If search value is a regular expression, it will attempt to match the result
+    # of the method with the specified regular expression.
     # Also accepts the "wait_time_seconds" parameter, if you want to override the default value
     #
     #   Example Usage:
     #
     #   class FooSection < SitePrism::Section
     #     element :title_element, '.title'
+    #     element :name_element, '.name'
     #
     #     def title
     #       title_element.text
+    #     end
+    #
+    #     def name
+    #       name_element.text
     #     end
     #   end
     #
@@ -139,21 +146,34 @@ module SitePrism
     #     sections :foo_sections, FooSection, '.foo'
     #   def
     #
-    #   # Search on the Bar page for any Foo sections containing the title "qux"
+    #   # Search on the Bar page for any Foo sections by both their name and title
     #   bar_page = BarPage.new
-    #   foo_with_qux_title = bar_page.search_collection(:foo_sections, :title, 'qux')
+    #   found_foo_section = bar_page.find_in(:foo_sections, title: 'qux', name: 'qux')
     #
-    def search_collection(collection_name, method_name, search_value, wait_time_seconds: Capybara.default_max_wait_time)
+    #   # Search for a foo section whose name matches a regular expression, using a shorter wait time
+    #   found_foo_section = bar_page.find_in(:foo_sections, name: /[0-9]abc/, wait_time_seconds: 5)
+    #
+    def find_in(collection_name, search_options = {})
       self.send("wait_for_#{collection_name.to_sym}")
       found_item = nil
+      wait_time_seconds = search_options.delete(:wait_time_seconds) || Capybara.default_max_wait_time
       wait_until_true(wait_time_seconds) do
-        found_item = self.send(collection_name.to_sym).find do |collection|
-          (collection.send(method_name.to_sym) == search_value) rescue false
-        end
+        found_item = self.send(collection_name.to_sym).find do |collection_item|
+          search_options.keys.all? do |key|
+            method_name = key.to_sym
+            search_value = search_options[key]
+            if search_value.is_a? Regexp
+              (collection_item.send(method_name) =~ search_value).is_a?(Integer) rescue false
+            else
+              (collection_item.send(method_name) == search_value) rescue false
+            end
+          end # Is true only if all of the specified methods returned the expected values for this item
+        end # Returns the first item in the collection whose find block was true
         found_item.present?
       end
       found_item
     end
+
   end
 end
 
