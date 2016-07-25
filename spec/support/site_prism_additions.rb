@@ -112,13 +112,47 @@ module SitePrism
           line_number,
       ].join('-') + '.png'
 
-      tmp_dir = PROJECT_ROOT.join('tmp')
+      tmp_dir           = PROJECT_ROOT.join('tmp')
       screenshot_dir, _ = FileUtils.mkdir_p File.join tmp_dir, 'screenshots'
-      screenshot_path = File.join screenshot_dir, screenshot_name
+      screenshot_path   = File.join screenshot_dir, screenshot_name
 
       # Save and inform
       page.save_screenshot(screenshot_path, full: true)
       puts '', meta[:full_description], "  Screenshot: #{screenshot_path}"
+    end
+
+    # Method that makes it easier to search a collection of sections,
+    # using the collection name, a specified method name, and the expected value.
+    # Also accepts the "wait_time_seconds" parameter, if you want to override the default value
+    #
+    #   Example Usage:
+    #
+    #   class FooSection < SitePrism::Section
+    #     element :title_element, '.title'
+    #
+    #     def title
+    #       title_element.text
+    #     end
+    #   end
+    #
+    #   def BarPage < SitePrism::Page
+    #     sections :foo_sections, FooSection, '.foo'
+    #   def
+    #
+    #   # Search on the Bar page for any Foo sections containing the title "qux"
+    #   bar_page = BarPage.new
+    #   foo_with_qux_title = bar_page.search_collection(:foo_sections, :title, 'qux')
+    #
+    def search_collection(collection_name, method_name, search_value, wait_time_seconds: Capybara.default_max_wait_time)
+      self.send("wait_for_#{collection_name.to_sym}")
+      found_item = nil
+      wait_until_true(wait_time_seconds) do
+        found_item = self.send(collection_name.to_sym).find do |collection|
+          (collection.send(method_name.to_sym) == search_value) rescue false
+        end
+        found_item.present?
+      end
+      found_item
     end
   end
 end
