@@ -23,9 +23,6 @@ extension methods for the SitePrism page objects (which make my life easier).
 
 3. Run `make run` to launch the test suite.
 
-Please note: For this to work correctly, your MWP manager must *NOT* have any sites currently
-installed. You need to start this test from a blank slate.
-
 To use different web browsers, simply set your 'WEBDRIVER' environment variable.
 You can choose between selenium (firefox), chrome, or poltergeist.
 
