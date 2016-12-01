@@ -31,6 +31,8 @@ extension methods for the SitePrism page objects (which make my life easier).
 To use different web browsers, simply set your 'WEBDRIVER' environment variable.
 You can choose between selenium-server (remote or docker grid), selenium (firefox), chrome, or poltergeist
 
+To stop your selenium server, simply run `make stop-selenium-server`.
+
 
 ## More Information
 
