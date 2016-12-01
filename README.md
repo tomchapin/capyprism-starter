@@ -23,7 +23,7 @@ extension methods for the SitePrism page objects (which make my life easier).
 
 3. Run `docker pull elgalu/selenium` to fetch the Docker image for the Selenium grid
 
-4. Run `make start-selenium-server`. If this worked correctly, you should be able to browse to
+4. Run `make selenium-grid-start`. If this worked correctly, you should be able to browse to
    http://localhost:4444/grid/console to see your Selenium server console.
 
 5. Run `make run` to launch the test suite.
@@ -31,7 +31,7 @@ extension methods for the SitePrism page objects (which make my life easier).
 To use different web browsers, simply set your 'WEBDRIVER' environment variable.
 You can choose between selenium-server (remote or docker grid), selenium (firefox), chrome, or poltergeist
 
-To stop your selenium server, simply run `make stop-selenium-server`.
+To stop your selenium server, simply run `make selenium-grid-stop`.
 
 
 ## More Information
