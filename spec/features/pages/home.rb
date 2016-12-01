@@ -1,6 +1,6 @@
 module Pages
   class Home < SitePrism::Page
-    set_url "/"
+    set_url "/MyHyundai/Home/Dashboard"
 
     element :search_field, 'input[title="Search"]'
     element :search_button, 'button[value="Search"]'
