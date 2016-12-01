@@ -13,9 +13,12 @@ module Pages
     # Action items
     # -------------------------------------------
 
-    def search_for(text: '')
-      search_field.set(text)
-      search_button.click
+    def login(email_address: '', password: '')
+      within_frame(find('.myhyundai-lbIframe')) do
+        page.find('input[name=Email]').set(email_address)
+        page.find('input[name=Password]').set(password)
+        page.find('.formSubmit button[type=Submit]').click
+      end
     end
 
     # -------------------------------------------

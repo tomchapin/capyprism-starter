@@ -17,6 +17,10 @@ raise('Your URL environment variable is missing! Make sure your .env file is in 
 Dir[PROJECT_ROOT.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Requires page objects for feature tests
+Dir[PROJECT_ROOT.join('spec/features/iframes/sections/**/*.rb')].each { |f| require f }
+Dir[PROJECT_ROOT.join('spec/features/iframes/**/*.rb')].each { |f| require f }
+
+# Requires page objects for feature tests
 Dir[PROJECT_ROOT.join('spec/features/pages/sections/**/*.rb')].each { |f| require f }
 Dir[PROJECT_ROOT.join('spec/features/pages/**/*.rb')].each { |f| require f }
 
