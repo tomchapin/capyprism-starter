@@ -1,7 +1,5 @@
 module Iframes
-  class Login < SitePrism::Page
-
-    element :email_input, 'input[name=Email]'
+  class BlankExample < SitePrism::Page
 
     # -------------------------------------------
     # Getter methods
@@ -10,10 +8,6 @@ module Iframes
     # -------------------------------------------
     # Action items
     # -------------------------------------------
-    def login(email_address: '', password: '')
-      binding.pry
-    end
-
 
     # -------------------------------------------
     # Validation methods
