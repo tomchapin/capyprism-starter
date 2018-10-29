@@ -7,25 +7,28 @@ extension methods for the SitePrism page objects (which make my life easier).
 
 ## Pre-requisites
 
-- Ruby (tested with ver 2.3.1)
+- Ruby (tested with ver 2.4.1)
 - Bundler (run `gem install bundler` to install it if you don't have it)
-- Firefox (tested with ver 47.0.1)
-- Chrome (tested with ver 51)
-- Chromedriver (tested with ver 2.22 - run `brew install chromedriver` if you don't have it)
-- Poltergeist (tested with ver 2.1.1 - run `brew install phantomjs` if you don't have it)
+- Firefox (tested with ver 63)
+- Geckodriver (tested with ver 0.23.0 - run `brew install geckodriver` if you don't have it)
+- Chrome (tested with ver 70)
+- Chromedriver (tested with ver 2.43 - run `brew tap homebrew/cask && brew cask install chromedriver` if you don't have it)
 
 
 ## Setup and How to Use
 
-1. Copy the `.env-example` file to `.env` and make sure the URL variable is pointed at the right place
+1. Copy the `.env` file to a file named `.env.local` and edit it according to your preferences.
    
 2. Run `make install` to install all of the necessary gems.
 
 3. Run `make run` to launch the test suite.
 
 To use different web browsers, simply set your 'WEBDRIVER' environment variable.
-You can choose between selenium (firefox), chrome, or poltergeist.
-
+The options available for the WEBDRIVER setting are:
+- `chrome`
+- `chrome_headless`
+- `firefox`
+- `firefox_headless`
 
 ## More Information
 
