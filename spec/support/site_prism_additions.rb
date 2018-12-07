@@ -15,7 +15,7 @@ module SitePrism
       #   @foo.wait_until_loaded
       #
       def wait_until_loaded
-         raise SitePrism::TimeoutException unless displayed?
+         raise SitePrism::TimeoutError unless displayed?
          wait_for_javascript
       end
 
