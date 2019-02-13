@@ -173,9 +173,22 @@ module SitePrism
          end
          found_item
       end
+         
+      # Fails gracefully whenever a stale element is encountered, and returns the specified value instead
+      # This is useful to use in combination with a wait_until_true do block
+      def fail_gracefully(value_on_failure: [])
+         begin
+            yield
+         rescue Selenium::WebDriver::Error::StaleElementReferenceError => e
+            puts e
+            value_on_failure
+         end
+      end
 
    end
 end
 
 SitePrism::Page.include SitePrism::Additions
+SitePrism::Page.include RSpec::Matchers
 SitePrism::Section.include SitePrism::Additions
+SitePrism::Section.include RSpec::Matchers
