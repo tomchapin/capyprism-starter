@@ -50,7 +50,7 @@ RSpec.configure do |config|
   config.include SitePrism::Additions
 
   config.before(:each) do
-    DownloadHelpers::clear_downloads
+    DownloadHelpers.clear_downloads
   end
 
   config.after(:each) do |example|
