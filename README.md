@@ -19,9 +19,9 @@ extension methods for the SitePrism page objects (which make my life easier).
 
 1. Copy the `.env` file to a file named `.env.local` and edit it according to your preferences.
    
-2. Run `make install` to install all of the necessary gems.
+2. Run `bundle install` to install all of the necessary gems.
 
-3. Run `make run` to launch the test suite.
+3. Run `bundle exec rspec` to launch the test suite.
 
 To use different web browsers, simply set your 'WEBDRIVER' environment variable.
 The options available for the WEBDRIVER setting are:
