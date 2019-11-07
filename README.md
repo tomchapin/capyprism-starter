@@ -33,4 +33,4 @@ The options available for the WEBDRIVER setting are:
 ## More Information
 
 - Capybara Documentation - https://github.com/jnicklas/capybara
-- SitePrism Documentation - https://github.com/natritmeyer/site_prism
+- SitePrism Documentation - https://github.com/site-prism/site_prism
