@@ -7,12 +7,12 @@ extension methods for the SitePrism page objects (which make my life easier).
 
 ## Pre-requisites
 
-- Ruby (tested with ver 2.4.1)
+- Ruby (tested with v2.4.1)
 - Bundler (run `gem install bundler` to install it if you don't have it)
-- Firefox (tested with Firefox ver 69.0.3 - 64-bit)
-- Geckodriver (tested with ver 0.26.0 - run `brew install geckodriver` if you don't have it)
-- Chrome (tested with ver 70)
-- Chromedriver (tested with ver 78.0.3904.70 - run `brew tap homebrew/cask && brew cask install chromedriver` if you don't have it)
+- Firefox (tested with Firefox v69.0.3 - 64-bit)
+- Geckodriver (tested with v0.26.0 - run `brew install geckodriver` if you don't have it)
+- Chrome (tested with v70)
+- Chromedriver (tested with v78.0.3904.70 - run `brew tap homebrew/cask && brew cask install chromedriver` if you don't have it)
 
 
 ## Setup and How to Use
