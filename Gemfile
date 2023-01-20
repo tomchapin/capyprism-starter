@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'activesupport', '5.2.3'        # General purpose utility library
+gem 'activesupport', '6.1.7.1'      # General purpose utility library
 gem 'capybara', '3.29.0'            # Toolkit for interfacing with selenium
 gem 'capybara-screenshot', '1.0.23' # Take snapshots of web page on test failures
 gem 'dotenv', '2.7.5'               # Gem that loads contents of the .env file in as environment vars
